@@ -2,12 +2,11 @@ const webpack = require('webpack');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const CopywebpackPlugin = require('copy-webpack-plugin');
 
-
 module.exports = [
   new ForkTsCheckerWebpackPlugin(),
   new CopywebpackPlugin({
     patterns: [
-      { from: './node_modules/cesium/Build/Cesium/Workers', to: 'main_window/Workers' },
+      { from: './node_modules/cesium/Source/Workers', to: 'main_window/Workers' },
       { from: './node_modules/cesium/Source/Assets', to: 'main_window/Assets' },
       { from: './node_modules/cesium/Source/Core', to: 'main_window/Core' },
       { from: './node_modules/cesium/Source/DataSources', to: 'main_window/DataSources' },

@@ -14,11 +14,9 @@
       "*": ["node_modules/*"]
     },
     "jsx": "react-jsx",
-    "types": [
-      "cesium"
-    ]
+    "types": [ "cesium" ]
   },
   "include": [
-    "src/**/*"
+    "src"
   ]
 }

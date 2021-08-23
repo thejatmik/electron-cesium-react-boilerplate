@@ -38,14 +38,17 @@
           "config": {}
         },
         {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
+          "name": "electron-forge-maker-appimage",
+          "platforms": [
+            "linux"
+          ]
         }
       ],
       "plugins": [
         [
           "@electron-forge/plugin-webpack",
           {
+            "devContentSecurityPolicy": "default-src 'self' 'unsafe-inline' 'unsafe-eval' data: *.cesium.com *.virtualearth.net; script-src 'self' 'unsafe-eval' *.virtualearth.net;",
             "mainConfig": "./webpack.main.config.js",
             "renderer": {
               "config": "./webpack.renderer.config.js",
@@ -75,10 +78,10 @@
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "@typescript-eslint/parser": "^4.0.1",
     "@vercel/webpack-asset-relocator-loader": "1.6.0",
-    "cesium": "^1.84.0",
     "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^6.0.0",
     "electron": "13.2.1",
+    "electron-forge-maker-appimage": "git+https://github.com/Marcus10110/electron-forge-maker-appimage.git",
     "eslint": "^7.6.0",
     "eslint-plugin-import": "^2.20.0",
     "fork-ts-checker-webpack-plugin": "^6.0.1",
@@ -89,6 +92,7 @@
     "url-loader": "^4.1.1"
   },
   "dependencies": {
+    "cesium": "^1.84.0",
     "electron-squirrel-startup": "^1.0.0",
     "path-browserify": "^1.0.1",
     "react": "^17.0.2",
