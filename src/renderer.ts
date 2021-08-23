@@ -26,7 +26,8 @@
  * ```
  */
 
-import 'cesium/Build/Cesium/Widgets/widgets.css';
-import './web';
 
 console.log('👋 This message is being logged by "renderer.js", included via webpack');
+import './react/index';
+// eslint-disable-next-line
+import 'cesium/Build/CesiumUnminified/Widgets/widgets.css';
