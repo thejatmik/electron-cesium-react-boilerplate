@@ -95,9 +95,11 @@
   "dependencies": {
     "cesium": "^1.84.0",
     "electron-squirrel-startup": "^1.0.0",
+    "electron-store": "^8.0.1",
     "path-browserify": "^1.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "reflect-metadata": "^0.1.13",
     "request": "^2.88.2"
   }
 }
