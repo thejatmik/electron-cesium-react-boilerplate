@@ -1,32 +1,14 @@
-import { ipcRenderer, contextBridge } from "electron";
-
-import * as mainWindow from './electron/window/main';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 declare global {
     interface Window {
         electron: any;
         electronWindow: any;
+        store: { invoke: any };
     }
 }
 
-contextBridge.exposeInMainWorld("electronWindow", {
-  api: {
-    openNotification(message: string) {
-      ipcRenderer.send("notify", message);
-    },
-    createNewWindow({...kwargs}) {
-      ipcRenderer.send("create-new-window", kwargs);
-    },
-  },
-});
-contextBridge.exposeInMainWorld("electron", {
-  notificationApi: {
-    sendNotification(message: string) {
-      ipcRenderer.send("notify", message);
-    },
-  },
-  batteryApi: {},
-  fileApi: {},
-});
+// load contextBride methods here
+import './electron/contextBridge';
 
 console.log('preload done');

@@ -11,7 +11,7 @@ export class CesiumStore extends BaseStore {
   }
 
   setIonToken = async (token: string|undefined): Promise<void> => {
-    await this.store.set('cesium.IonToken', token);
+    this.store.set('cesium.IonToken', token);
   }
 
   getIonToken = async (): Promise<string|undefined|unknown> => {

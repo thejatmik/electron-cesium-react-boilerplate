@@ -2,14 +2,6 @@
 // store handler for renderer process
 import { ipcRenderer, contextBridge } from 'electron';
 
-declare global {
-  interface Window {
-    store: {
-      invoke: any;
-    };
-  }
-}
-
 contextBridge.exposeInMainWorld(
   'store', {
     invoke: async ({ ...kwargs }) => {
@@ -27,4 +19,3 @@ contextBridge.exposeInMainWorld(
 );
 
 console.log('_contextBridge_store')
-

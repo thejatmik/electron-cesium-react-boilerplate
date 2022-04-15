@@ -3,8 +3,11 @@ import 'reflect-metadata';
 
 import { app, BrowserWindow } from 'electron';
 
-import { createWindow } from './electron/window';
-import { createMainWindow } from './electron/window/main'
+import { createMainWindow } from './electron/window'
+
+// load ipc handler here
+import './electron/ipc';
+
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
   app.quit();
@@ -16,7 +19,7 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 
 // app.on('ready', createMainWindow);
 app.on('ready', () => {
-  createWindow();
+  createMainWindow();
 });
 
 // Quit when all windows are closed, except on macOS. There, it's common
