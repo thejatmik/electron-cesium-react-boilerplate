@@ -3,6 +3,7 @@
 import { ipcRenderer, contextBridge } from 'electron';
 
 contextBridge.exposeInMainWorld(
+  // use in renderer as global window.store
   'store', {
     invoke: async ({ ...kwargs }) => {
       const { name, method, params, ...options } = kwargs;

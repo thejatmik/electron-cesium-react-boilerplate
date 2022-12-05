@@ -1,0 +1,38 @@
+.setting-container {
+  height: 100vh;
+  width: 100vw;
+}
+
+.setting-container-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.setting-container-component-top {
+  margin: 1em;
+  padding: 2em;
+  font-size: x-large;
+  text-align: center;
+}
+.setting-container-component-middle {
+  margin: 0.25em;
+  padding: 0.5em;
+  font-size: default;
+}
+
+.setting-item-button {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border: 2.5px solid beige;
+  border-radius: 10px;
+  background-color: beige;
+  color: darkblue;
+  cursor: pointer;
+}
+
+.setting-item-button:hover {
+  border-color: darkslategray;
+  background-color: darkslategray;
+  color: beige;
+}
