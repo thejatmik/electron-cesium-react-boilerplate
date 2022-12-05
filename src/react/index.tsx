@@ -4,12 +4,21 @@ import {
   BrowserRouter as Router,
   Route,
 } from 'react-router-dom';
+
 import ViewManager from './ViewManager';
+import ConsoleFeed from './components/ConsoleFeed';
+
+import './index.css';
 
 const render = ():void => {
   ReactDOM.render(
     <Router>
-      <Route path="/" component={ViewManager} />
+      <div className='main-window'>
+        <Route path="/" component={ViewManager} />
+      </div>
+      <div className='console-feed-window'>
+        <ConsoleFeed />
+      </div>
     </Router>,
     document.getElementById("root")
   );

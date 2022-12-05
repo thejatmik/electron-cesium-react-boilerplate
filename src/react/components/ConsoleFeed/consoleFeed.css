@@ -1,0 +1,9 @@
+.console-feed-display-none {
+  display: none;
+}
+
+.console-feed {
+  max-height: 15em;
+  background-color: beige;
+  overflow-y: scroll;
+}

@@ -98,6 +98,8 @@
   },
   "dependencies": {
     "cesium": "^1.84.0",
+    "classnames": "^2.3.2",
+    "console-feed": "^3.4.1",
     "electron-settings": "^4.0.2",
     "electron-squirrel-startup": "^1.0.0",
     "electron-store": "6.0.1",
