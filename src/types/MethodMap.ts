@@ -1,5 +1,5 @@
 type MethodMap = {
-  [index: string] : (args: unknown) => void
+  [index: string] : (args: any) => any
 }
 
 export default MethodMap

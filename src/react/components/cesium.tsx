@@ -14,9 +14,13 @@ import {
 const { invoke } = window.store;
 
 function initViewer(
-  ref: React.MutableRefObject<undefined>,
-  setViewer: React.Dispatch<React.SetStateAction<Viewer|undefined>>
-): Viewer {
+  // ref: React.MutableRefObject<HTMLDivElement>,
+  ref: React.RefObject<Element>,
+  setViewer: React.Dispatch<React.SetStateAction<Viewer|null>>
+): Viewer|null {
+  if (!ref || !ref.current) {
+    return null
+  }
   const viewer = new Viewer(ref.current, {
     animation: false,
     geocoder: false,
@@ -38,11 +42,11 @@ function initViewer(
 }
 
 const Cesium = (): JSX.Element => {
-  const [viewer, setViewer] = useState(null);
-  const cesiumRef = useRef();
+  const [viewer, setViewer] = useState<Viewer|null>(null);
+  const cesiumRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!cesiumRef && !cesiumRef.current) {
+    if (!cesiumRef || !cesiumRef.current) {
       return;
     }
 
@@ -56,7 +60,9 @@ const Cesium = (): JSX.Element => {
     .then((token: string) => {
       console.log(token, '--token');
       Ion.defaultAccessToken = token;
-      initViewer(cesiumRef, setViewer);
+      if (cesiumRef && cesiumRef.current) {
+        initViewer(cesiumRef, setViewer);
+      }
     })
     .catch((err: Error) => {
       console.error(err);

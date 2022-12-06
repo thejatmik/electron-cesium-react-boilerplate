@@ -15,6 +15,12 @@ const {
   createNewWindow,
 } = api || {};
 
+export interface newWindowOption {
+  width?: number,
+  height?: number,
+  url?: string,
+}
+
 const Front = (): JSX.Element => {
   const handleCreateNotification = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -23,12 +29,11 @@ const Front = (): JSX.Element => {
     openNotification('Notification window');
     console.log('openNotification');
   }
-  const handleOpenWindow = (e: React.MouseEvent) => {
-    e.preventDefault();
+  const handleOpenWindow = (args:newWindowOption) => {
     createNewWindow({
-      height: 600,
-      weight: 600,
-      url: window.location.pathname + "?settingToken"
+      height: args.height && 600,
+      weight: args.width && 600,
+      url: args.url
     });
     console.log('openWindow');
   }
@@ -61,9 +66,34 @@ const Front = (): JSX.Element => {
 
           <button
             className='front-item-link'
-            onClick={handleOpenWindow}
+            onClick={() => {
+              handleOpenWindow({
+                // url: window.location.pathname.split('?')[0] + '?settingToken',
+              });
+            }}
           >
             Open Window
+          </button>
+          <button
+            className='front-item-link'
+            onClick={() => {
+              console.log(window.location.href, 'href');
+              handleOpenWindow({
+                url: window.location.href.split('?')[0] + '?settingToken',
+              });
+            }}
+          >
+            Open Setting Window
+          </button>
+          <button
+            className='front-item-link'
+            onClick={() => {
+              handleOpenWindow({
+                url: window.location.href.split('?')[0] + '?cesium',
+              });
+            }}
+          >
+            Open Cesium Window
           </button>
         </div>
 
@@ -84,23 +114,9 @@ const Front = (): JSX.Element => {
             </Link>
             <Link
               className='front-item-link'
-              to="/main_window?settingToken"
-              target="_blank"
-            >
-              Open Setting Window
-            </Link>
-            <Link
-              className='front-item-link'
               to="/main_window?cesium"
             >
               Open Cesium Page
-            </Link>
-            <Link
-              className='front-item-link'
-              to="/main_window?cesium"
-              target="_blank"
-            >
-              Open Cesium Window
             </Link>
           </div>
         </div>
