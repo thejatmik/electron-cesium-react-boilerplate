@@ -108,13 +108,13 @@ const Front = (): JSX.Element => {
           >
             <Link
               className='front-item-link'
-              to="/main_window?settingToken"
+              to="./main_window?settingToken"
             >
               Open Setting Page
             </Link>
             <Link
               className='front-item-link'
-              to="/main_window?cesium"
+              to="./main_window?cesium"
             >
               Open Cesium Page
             </Link>
