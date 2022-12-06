@@ -84,7 +84,7 @@
     "@vercel/webpack-asset-relocator-loader": "1.6.0",
     "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^6.0.0",
-    "electron": "13.2.1",
+    "electron": "22.0.0",
     "electron-forge-maker-appimage": "git+https://github.com/Marcus10110/electron-forge-maker-appimage.git",
     "eslint": "^7.6.0",
     "eslint-plugin-import": "^2.20.0",
@@ -97,6 +97,7 @@
     "url-loader": "^4.1.1"
   },
   "dependencies": {
+    "@electron/remote": "^2.0.9",
     "cesium": "^1.84.0",
     "classnames": "^2.3.2",
     "console-feed": "^3.4.1",
