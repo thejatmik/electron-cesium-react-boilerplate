@@ -87,3 +87,7 @@ typings/
 
 # Electron-Forge
 out/
+
+# Wdio output
+_results_
+allure-results
