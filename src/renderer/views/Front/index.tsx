@@ -10,6 +10,7 @@ import './front.css';
 const {
   api,
 } = window.electronWindow || {};
+
 const {
   openNotification,
   createNewWindow,

@@ -10,7 +10,7 @@ import ConsoleFeed from './components/ConsoleFeed';
 
 import './index.css';
 
-const render = ():void => {
+export const render = ():void => {
   ReactDOM.render(
     <Router>
       <div className='main-window'>
@@ -23,5 +23,3 @@ const render = ():void => {
     document.getElementById("root")
   );
 }
-
-render();

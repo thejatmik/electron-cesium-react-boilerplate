@@ -1,12 +1,15 @@
 import Store from 'electron-store';
-import MethodMap from '../../types/MethodMap';
+import {
+  BaseStore as BaseStoreInterface,
+  MethodMap,
+} from '../../types';
 
-export class BaseStore {
+export class BaseStore implements BaseStoreInterface {
   store: Store;
   methodMap: MethodMap;
-  do: (command: string, params: unknown) => unknown;
+  do: (command: string, params: any) => Promise<any>|any;
 
-  constructor(store: Store) {
+  constructor(store: Store = new Store()) {
     this.store = store;
     this.methodMap = {};
     this.do = (command, params) => {

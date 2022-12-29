@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // store handler for renderer process
-import { ipcRenderer, contextBridge } from 'electron';
+import { ipcRenderer, IpcRendererEvent } from 'electron';
 
-contextBridge.exposeInMainWorld(
-  // use in renderer as global window.store
-  'store', {
-    invoke: async ({ ...kwargs }) => {
+export default {
+  key: 'store',
+  api: {
+    invoke: async ({ ...kwargs }: {[key: string]: any}): Promise<IpcRendererEvent> => {
       const { name, method, params, ...options } = kwargs;
       console.log('context store invoke', kwargs);
       return ipcRenderer.invoke(
@@ -17,6 +17,6 @@ contextBridge.exposeInMainWorld(
       );
     },
   },
-);
+}
 
 console.log('_contextBridge_store')

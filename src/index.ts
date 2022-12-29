@@ -1,12 +1,36 @@
 // decorators
 import 'reflect-metadata';
-
 import { app, BrowserWindow } from 'electron';
+import Store from 'electron-store';
+import * as remoteMain from '@electron/remote/main';
 
-import { createMainWindow } from './electron/window'
+remoteMain.initialize()
+
+import { CesiumStore } from './main';
+import { createMainWindow } from './main/window';
+import { MainStore } from './types';
 
 // load ipc handler here
-import './electron/ipc';
+import {
+  addHandler,
+  storeHandler,
+  notifyHandler,
+  windowHandler,
+} from './main/ipc';
+
+let cesiumStore = new CesiumStore(new Store);
+
+export let mainStore: MainStore = {
+  create: (key, storeEntity) => {
+    mainStore[key] = storeEntity
+  }
+}
+
+mainStore.create('cesium', cesiumStore);
+
+addHandler(storeHandler);
+addHandler(notifyHandler);
+addHandler(windowHandler);
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require

@@ -1,14 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+// import { exposeInMainWorld } from './main';
+import runContextBridge, {
+    appCtxBridges,
+} from './main/contextBridge';
 
 declare global {
     interface Window {
-        electron: any;
-        electronWindow: any;
-        store: { invoke: any };
+        [key: string]: any;
     }
 }
 
 // load contextBride methods here
-import './electron/contextBridge';
-
+runContextBridge(...appCtxBridges)
 console.log('preload done');
