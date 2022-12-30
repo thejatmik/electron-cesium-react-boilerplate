@@ -10,6 +10,8 @@ import { CesiumStore } from './main';
 import { createMainWindow } from './main/window';
 import { MainStore } from './types';
 
+import { main as helloMain } from './plugins/hello';
+
 // load ipc handler here
 import {
   addHandler,
@@ -31,6 +33,8 @@ mainStore.create('cesium', cesiumStore);
 addHandler(storeHandler);
 addHandler(notifyHandler);
 addHandler(windowHandler);
+// add from plugins
+addHandler(helloMain.ipcHandler)
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require

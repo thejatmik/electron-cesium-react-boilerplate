@@ -22,8 +22,18 @@ import Front from './renderer/views/Front';
 // eslint-disable-next-line
 import 'cesium/Build/CesiumUnminified/Widgets/widgets.css';
 
+// plugins
+// TODO: something as entrypoint before plugin component rendered
+// maybe a list view of enabled plugins? or from menu? injecting element?
+// for now i'll hardcode on Front view
+import Hello from './plugins/hello/components';
+
 viewManagerSwitch.addComponent('default', Front);
 viewManagerSwitch.addComponent('cesium', Cesium);
 viewManagerSwitch.addComponent('settingToken', Setting);
+viewManagerSwitch.addComponent('hello', Hello);
+//
+// TODO: error handling if plugin failed to load
+// viewManagerSwitch.addComponent(helloRenderer.key, helloRenderer.component);
 
 render();

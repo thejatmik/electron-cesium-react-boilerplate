@@ -96,6 +96,16 @@ const Front = (): React.ReactElement => {
           >
             Open Cesium Window
           </button>
+          <button
+            className='front-item-link'
+            onClick={() => {
+              handleOpenWindow({
+                url: window.location.href.split('?')[0] + '?hello',
+              });
+            }}
+          >
+            Open Plugins: Hello
+          </button>
         </div>
 
         <div>
