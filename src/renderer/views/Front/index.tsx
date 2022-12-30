@@ -22,7 +22,7 @@ export interface newWindowOption {
   url?: string,
 }
 
-const Front = (): JSX.Element => {
+const Front = (): React.ReactElement => {
   const handleCreateNotification = (e: React.MouseEvent) => {
     e.preventDefault();
     // console.log('handleCreateNotification');

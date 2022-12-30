@@ -2,10 +2,11 @@
 
 import Store from "electron-store";
 
-interface ArgsFunction {
+export interface ArgsFunction {
   (...args: any): any
 }
-interface KwargsFunction {
+
+export interface KwargsFunction {
   ({...kwargs}: {[key: string]: any}): any
 }
 
@@ -19,7 +20,9 @@ export interface BaseStore {
 export type MethodMap = {
   [index: string] : (args: any) => any
 }
+
 export type CtxBridgeFunction = ArgsFunction | KwargsFunction
+
 export type MainStore = {
   create?: (key: string, storeEntity: BaseStore) => void;
   [index: string]: BaseStore|unknown;
@@ -41,3 +44,10 @@ export interface IpcHandler {
     handlerFunc?: (event: Electron.IpcMainInvokeEvent, ...args: any) => any,
     listener?: (event: Electron.IpcMainEvent, ...args: any) => any,
 }
+
+export type ViewManagerSwitch = {
+  addComponent?: (key: string, element: (...args:React.ComponentProps<any>) => React.ReactElement) => void;
+  get?: (key: string) => (...args:React.ComponentProps<any>) => React.ReactElement;
+  default: (...args:React.ComponentProps<any>) => React.ReactElement;
+  [index: string]: (...args:React.ComponentProps<any>) => React.ReactElement|any;
+} 

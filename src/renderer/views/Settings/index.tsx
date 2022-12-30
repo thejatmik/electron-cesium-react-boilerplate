@@ -6,7 +6,7 @@ import Token from './token';
 
 import './settings.css';
 
-const Setting = (): JSX.Element => {
+const Setting = (): React.ReactElement => {
   const history = useHistory();
 
   return (

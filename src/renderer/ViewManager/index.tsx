@@ -1,21 +1,13 @@
 import React from 'react';
 import ReactRouter from 'react-router-dom';
 
-import Front from '../views/Front';
-import Cesium from '../components/cesium';
-import Setting from '../views/Settings';
+import { viewManagerSwitch } from '../';
 
 const ViewManager = (props: ReactRouter.RouteProps): JSX.Element => {
-  const name = props.location?.search.substr(1);
+  const name = props.location?.search.substring(1);
   // console.log(props.location.search);
-  switch(name) {
-    case 'cesium':
-      return <Cesium key={3} />
-    case 'settingToken':
-      return <Setting key={2} />
-    default:
-      return <Front key={1} />
-  }
+  let Element = viewManagerSwitch.get(name);
+  return (<Element key={1} />)
 }
 
 export default ViewManager;

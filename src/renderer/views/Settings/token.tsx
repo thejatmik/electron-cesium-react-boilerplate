@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom';
 
 const { invoke } = window.store;
 
-const Token = (): JSX.Element => {
+const Token = (): React.ReactElement => {
   const [token, setToken] = useState('');
   const history = useHistory();
 
